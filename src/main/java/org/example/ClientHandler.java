@@ -48,21 +48,21 @@ public class ClientHandler implements Runnable {
     }
 
     private void sendAllHotels(PrintWriter out) {
-        hotels.forEach(hotel -> out.println("-"+hotel.getName() + " - Spa: " + (hotel.hasSpa() ? "Sì" : "No")));
+        hotels.forEach(hotel -> out.println(String.format("-%-30s - Spa: %-10s", hotel.getName(), hotel.hasSpa() ? "Sì" : "No")));
         out.println("---------------------------");
     }
 
     private void sendSortedByName(PrintWriter out) {
         hotels.stream()
                 .sorted(Comparator.comparing(Hotel::getName))
-                .forEach(hotel -> out.println("-"+hotel.getName() + " - Spa: " + (hotel.hasSpa() ? "Sì" : "No")));
+                .forEach(hotel -> out.println(String.format("-%-30s - Spa: %-10s", hotel.getName(), hotel.hasSpa() ? "Sì" : "No")));
         out.println("---------------------------");
     }
 
     private void sendWithSpa(PrintWriter out) {
         hotels.stream()
                 .filter(Hotel::hasSpa)
-                .forEach(hotel -> out.println("-" + hotel.getName() + " - Spa: " + (hotel.hasSpa() ? "Sì" : "No")));
+                .forEach(hotel -> out.println(String.format("-%-30s - Spa: %-10s", hotel.getName(), hotel.hasSpa() ? "Sì" : "No")));
         out.println("---------------------------");
     }
 }
