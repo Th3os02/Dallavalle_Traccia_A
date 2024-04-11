@@ -58,7 +58,6 @@ public class ClientHandler implements Runnable {
                 .forEach(hotel -> out.println(String.format("-%-30s - Spa: %-10s", hotel.getName(), hotel.hasSpa() ? "Sì" : "No")));
         out.println("---------------------------");
     }
-
     private void sendWithSpa(PrintWriter out) {
         hotels.stream()
                 .filter(Hotel::hasSpa)
